@@ -1,22 +1,29 @@
-﻿
-namespace FinalPractice.SportDB {
-    export class ProductForm extends Serenity.PrefixedContext {
-        static formKey = 'SportDB.Product';
-    }
-
+﻿namespace FinalPractice.SportDB {
     export interface ProductForm {
         Title: Serenity.StringEditor;
-        Price: Serenity.IntegerEditor;
+        Price: Serenity.DecimalEditor;
     }
 
-    [,
-        ['Title', () => Serenity.StringEditor],
-        ['Price', () => Serenity.IntegerEditor]
-    ].forEach(x => Object.defineProperty(ProductForm.prototype, <string>x[0], {
-        get: function () {
-            return this.w(x[0], (x[1] as any)());
-        },
-        enumerable: true,
-        configurable: true
-    }));
+    export class ProductForm extends Serenity.PrefixedContext {
+        static formKey = 'SportDB.Product';
+        private static init: boolean;
+
+        constructor(prefix: string) {
+            super(prefix);
+
+            if (!ProductForm.init)  {
+                ProductForm.init = true;
+
+                var s = Serenity;
+                var w0 = s.StringEditor;
+                var w1 = s.DecimalEditor;
+
+                Q.initFormType(ProductForm, [
+                    'Title', w0,
+                    'Price', w1
+                ]);
+            }
+        }
+    }
 }
+

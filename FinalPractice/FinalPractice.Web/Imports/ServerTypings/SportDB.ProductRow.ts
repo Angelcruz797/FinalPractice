@@ -1,5 +1,4 @@
-﻿
-namespace FinalPractice.SportDB {
+﻿namespace FinalPractice.SportDB {
     export interface ProductRow {
         ProductId?: number;
         Title?: string;
@@ -10,21 +9,21 @@ namespace FinalPractice.SportDB {
         export const idProperty = 'ProductId';
         export const nameProperty = 'Title';
         export const localTextPrefix = 'SportDB.Product';
+        export const lookupKey = 'SportDB.Product';
+
+        export function getLookup(): Q.Lookup<ProductRow> {
+            return Q.getLookup<ProductRow>('SportDB.Product');
+        }
         export const deletePermission = 'Administration:General';
         export const insertPermission = 'Administration:General';
         export const readPermission = 'Administration:General';
         export const updatePermission = 'Administration:General';
 
-        export namespace Fields {
-            export declare const ProductId;
-            export declare const Title;
-            export declare const Price;
+        export declare const enum Fields {
+            ProductId = "ProductId",
+            Title = "Title",
+            Price = "Price"
         }
-
-        [
-            'ProductId',
-            'Title',
-            'Price'
-        ].forEach(x => (<any>Fields)[x] = x);
     }
 }
+

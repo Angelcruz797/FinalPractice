@@ -7410,3 +7410,15 @@ section.content > .s-DataGrid {
 .s-SportDB-ProductDialog .caption {
   width: 150px;
 }
+.s-SportDB-CustomerDialog > .size {
+  width: 650px;
+}
+.s-SportDB-CustomerDialog .caption {
+  width: 150px;
+}
+.s-SportDB-OrderDialog > .size {
+  width: 650px;
+}
+.s-SportDB-OrderDialog .caption {
+  width: 150px;
+}

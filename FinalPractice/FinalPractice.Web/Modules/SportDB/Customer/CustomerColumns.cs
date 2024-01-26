@@ -9,14 +9,15 @@ namespace FinalPractice.SportDB.Columns
     using System.Collections.Generic;
     using System.IO;
 
-    [ColumnsScript("SportDB.Product")]
-    [BasedOnRow(typeof(Entities.ProductRow), CheckNames = true)]
-    public class ProductColumns
+    [ColumnsScript("SportDB.Customer")]
+    [BasedOnRow(typeof(Entities.CustomerRow), CheckNames = true)]
+    public class CustomerColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
-        public Int32 ProductId { get; set; }
+        public Int32 CustomerId { get; set; }
         [EditLink]
-        public String Title { get; set; }
-        public Double Price { get; set; }
+        public String Fullname { get; set; }
+        public String Email { get; set; }
+        public Gender Gender { get; set; }
     }
 }

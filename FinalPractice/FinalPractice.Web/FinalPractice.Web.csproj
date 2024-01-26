@@ -1059,10 +1059,33 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Administration.PermissionKeys.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.CustomerColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.Gender.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderDetailsColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderDetailsForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderStatus.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.ProductColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Texts.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Membership\Account\LoginPanel.ts" />
+    <TypeScriptCompile Include="Modules\SportDB\OrderDetails\OrderrDetailsEditDialog.ts" />
+    <TypeScriptCompile Include="Modules\SportDB\OrderDetails\OrderrDetailsEditor.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jqueryui\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery.blockui\index.d.ts" />
@@ -1634,13 +1657,49 @@
     <TypeScriptCompile Include="Scripts\serenity\slick\serenity-slick.d.ts" />
     <TypeScriptCompile Include="Scripts\serenity\widget\serenity-widget.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\serenity\Serenity.CoreLib.d.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.ProductRow.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
-    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.ProductService.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.ProductRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.ProductService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <Content Include="Modules\SportDB\Product\ProductIndex.cshtml" />
     <TypeScriptCompile Include="Modules\SportDB\Product\ProductDialog.ts" />
     <TypeScriptCompile Include="Modules\SportDB\Product\ProductGrid.ts" />
-    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.ProductForm.ts">  <DependentUpon>ServerTypings.tt</DependentUpon></TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.ProductForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <Content Include="Content\site\site.sportdb.less" />
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.CustomerRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.CustomerService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\SportDB\Customer\CustomerIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\SportDB\Customer\CustomerDialog.ts" />
+    <TypeScriptCompile Include="Modules\SportDB\Customer\CustomerGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.CustomerForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\SportDB\Order\OrderIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\SportDB\Order\OrderDialog.ts" />
+    <TypeScriptCompile Include="Modules\SportDB\Order\OrderGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderDetailsRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderDetailsService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1658,6 +1717,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ClientTypes\SportDB.OrderrDetailsEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20240125_230200_UpdateOrderDetails.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20240125_202300_UpdateOrder.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20240124_185500_TableOrder.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20240124_190200_TableOrderDetails.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20240124_185400_TableCustomer.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20240125_174900_UpdateProduct.cs" />
     <Compile Include="Migrations\DefaultDB\DefaultDB_20240123_193200_TableProduct.cs" />
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
     <Compile Include="Modules\Administration\Language\LanguageLookup.cs" />
@@ -1737,6 +1805,10 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRow.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberHelper.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
+    <Compile Include="Modules\SportDB\Customer\Gender.cs" />
+    <Compile Include="Modules\SportDB\OrderDetails\OrderDetailsColumns.cs" />
+    <Compile Include="Modules\SportDB\OrderDetails\OrderDetailsForm.cs" />
+    <Compile Include="Modules\SportDB\Order\OrderStatus.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />
@@ -1782,6 +1854,21 @@
     <Compile Include="Modules\SportDB\Product\ProductColumns.cs" />
     <Compile Include="Modules\SportDB\Product\ProductForm.cs" />
     <Compile Include="Modules\SportDB\SportDBNavigation.cs" />
+    <Compile Include="Modules\SportDB\Customer\CustomerRow.cs" />
+    <Compile Include="Modules\SportDB\Customer\CustomerRepository.cs" />
+    <Compile Include="Modules\SportDB\Customer\CustomerEndpoint.cs" />
+    <Compile Include="Modules\SportDB\Customer\CustomerPage.cs" />
+    <Compile Include="Modules\SportDB\Customer\CustomerColumns.cs" />
+    <Compile Include="Modules\SportDB\Customer\CustomerForm.cs" />
+    <Compile Include="Modules\SportDB\Order\OrderRow.cs" />
+    <Compile Include="Modules\SportDB\Order\OrderRepository.cs" />
+    <Compile Include="Modules\SportDB\Order\OrderEndpoint.cs" />
+    <Compile Include="Modules\SportDB\Order\OrderPage.cs" />
+    <Compile Include="Modules\SportDB\Order\OrderColumns.cs" />
+    <Compile Include="Modules\SportDB\Order\OrderForm.cs" />
+    <Compile Include="Modules\SportDB\OrderDetails\OrderDetailsRow.cs" />
+    <Compile Include="Modules\SportDB\OrderDetails\OrderDetailsRepository.cs" />
+    <Compile Include="Modules\SportDB\OrderDetails\OrderDetailsEndpoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

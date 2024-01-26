@@ -13,6 +13,7 @@ namespace FinalPractice.SportDB.Entities
     [DisplayName("Product"), InstanceName("Product")]
     [ReadPermission("Administration:General")]
     [ModifyPermission("Administration:General")]
+    [LookupScript("SportDB.Product")]
     public sealed class ProductRow : Row, IIdRow, INameRow
     {
         [DisplayName("Product Id"), Identity]
@@ -29,8 +30,8 @@ namespace FinalPractice.SportDB.Entities
             set { Fields.Title[this] = value; }
         }
 
-        [DisplayName("Price (RD$)"), NotNull]
-        public Int32? Price
+        [DisplayName("Price (RD$)"), NotNull, LookupInclude]
+        public Double? Price
         {
             get { return Fields.Price[this]; }
             set { Fields.Price[this] = value; }
@@ -57,7 +58,7 @@ namespace FinalPractice.SportDB.Entities
         {
             public Int32Field ProductId;
             public StringField Title;
-            public Int32Field Price;
+            public DoubleField Price;
         }
     }
 }

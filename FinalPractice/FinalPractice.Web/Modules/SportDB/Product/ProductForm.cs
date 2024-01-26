@@ -14,6 +14,6 @@ namespace FinalPractice.SportDB.Forms
     public class ProductForm
     {
         public String Title { get; set; }
-        public Int32 Price { get; set; }
+        public Double Price { get; set; }
     }
 }

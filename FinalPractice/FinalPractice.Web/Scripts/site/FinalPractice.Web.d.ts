@@ -564,12 +564,225 @@ declare namespace FinalPractice {
     }
 }
 declare namespace FinalPractice.SportDB {
-    class ProductForm extends Serenity.PrefixedContext {
-        static formKey: string;
+}
+declare namespace FinalPractice.SportDB {
+    interface CustomerForm {
+        Firstname: Serenity.StringEditor;
+        Lastname: Serenity.StringEditor;
+        Email: Serenity.EmailEditor;
+        Gender: Serenity.EnumEditor;
     }
+    class CustomerForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace FinalPractice.SportDB {
+    interface CustomerRow {
+        CustomerId?: number;
+        Fullname?: string;
+        Firstname?: string;
+        Lastname?: string;
+        Gender?: Gender;
+        Email?: string;
+    }
+    namespace CustomerRow {
+        const idProperty = "CustomerId";
+        const nameProperty = "Fullname";
+        const localTextPrefix = "SportDB.Customer";
+        const lookupKey = "SportDB.Customer";
+        function getLookup(): Q.Lookup<CustomerRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            CustomerId = "CustomerId",
+            Fullname = "Fullname",
+            Firstname = "Firstname",
+            Lastname = "Lastname",
+            Gender = "Gender",
+            Email = "Email"
+        }
+    }
+}
+declare namespace FinalPractice.SportDB {
+    namespace CustomerService {
+        const baseUrl = "SportDB/Customer";
+        function Create(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CustomerRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CustomerRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CustomerRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "SportDB/Customer/Create",
+            Update = "SportDB/Customer/Update",
+            Delete = "SportDB/Customer/Delete",
+            Retrieve = "SportDB/Customer/Retrieve",
+            List = "SportDB/Customer/List"
+        }
+    }
+}
+declare namespace FinalPractice.SportDB {
+    enum Gender {
+        Male = 1,
+        Female = 2
+    }
+}
+declare namespace FinalPractice.SportDB {
+}
+declare namespace FinalPractice.SportDB {
+}
+declare namespace FinalPractice.SportDB {
+    interface OrderDetailsForm {
+        ProductId: Serenity.LookupEditor;
+        UnitPrice: Serenity.DecimalEditor;
+        Quantity: Serenity.IntegerEditor;
+    }
+    class OrderDetailsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace FinalPractice.SportDB {
+    interface OrderDetailsRow {
+        OrderDetailsId?: number;
+        OrderId?: number;
+        ProductId?: number;
+        Quantity?: number;
+        UnitPrice?: number;
+        LineTotal?: number;
+        OrderCutormerId?: number;
+        OrderStatus?: number;
+        OrderReleaseDate?: string;
+        OrderTotal?: number;
+        ProductTitle?: string;
+        ProductPrice?: number;
+    }
+    namespace OrderDetailsRow {
+        const idProperty = "OrderDetailsId";
+        const localTextPrefix = "SportDB.OrderDetails";
+        const lookupKey = "SportDB.OrderDetalis";
+        function getLookup(): Q.Lookup<OrderDetailsRow>;
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            OrderDetailsId = "OrderDetailsId",
+            OrderId = "OrderId",
+            ProductId = "ProductId",
+            Quantity = "Quantity",
+            UnitPrice = "UnitPrice",
+            LineTotal = "LineTotal",
+            OrderCutormerId = "OrderCutormerId",
+            OrderStatus = "OrderStatus",
+            OrderReleaseDate = "OrderReleaseDate",
+            OrderTotal = "OrderTotal",
+            ProductTitle = "ProductTitle",
+            ProductPrice = "ProductPrice"
+        }
+    }
+}
+declare namespace FinalPractice.SportDB {
+    namespace OrderDetailsService {
+        const baseUrl = "SportDB/OrderDetails";
+        function Create(request: Serenity.SaveRequest<OrderDetailsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OrderDetailsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderDetailsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderDetailsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "SportDB/OrderDetails/Create",
+            Update = "SportDB/OrderDetails/Update",
+            Delete = "SportDB/OrderDetails/Delete",
+            Retrieve = "SportDB/OrderDetails/Retrieve",
+            List = "SportDB/OrderDetails/List"
+        }
+    }
+}
+declare namespace FinalPractice.SportDB {
+    interface OrderForm {
+        CutormerId: Serenity.LookupEditor;
+        Status: Serenity.EnumEditor;
+        ReleaseDate: Serenity.DateEditor;
+        ProductList: OrderrDetailsEditor;
+    }
+    class OrderForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace FinalPractice.SportDB {
+    interface OrderRow {
+        OrderId?: number;
+        CutormerId?: number;
+        Status?: OrderStatus;
+        ReleaseDate?: string;
+        ProductList?: OrderDetailsRow[];
+        CutormerFirstname?: string;
+        CutormerLastname?: string;
+        CustomerFullname?: string;
+        CutormerGender?: number;
+    }
+    namespace OrderRow {
+        const idProperty = "OrderId";
+        const localTextPrefix = "SportDB.Order";
+        const deletePermission = "Administration:General";
+        const insertPermission = "Administration:General";
+        const readPermission = "Administration:General";
+        const updatePermission = "Administration:General";
+        const enum Fields {
+            OrderId = "OrderId",
+            CutormerId = "CutormerId",
+            Status = "Status",
+            ReleaseDate = "ReleaseDate",
+            ProductList = "ProductList",
+            CutormerFirstname = "CutormerFirstname",
+            CutormerLastname = "CutormerLastname",
+            CustomerFullname = "CustomerFullname",
+            CutormerGender = "CutormerGender"
+        }
+    }
+}
+declare namespace FinalPractice.SportDB {
+    namespace OrderService {
+        const baseUrl = "SportDB/Order";
+        function Create(request: Serenity.SaveRequest<OrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OrderRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "SportDB/Order/Create",
+            Update = "SportDB/Order/Update",
+            Delete = "SportDB/Order/Delete",
+            Retrieve = "SportDB/Order/Retrieve",
+            List = "SportDB/Order/List"
+        }
+    }
+}
+declare namespace FinalPractice.SportDB {
+    enum OrderStatus {
+        InProgress = 1,
+        InToDeliver = 2,
+        delivered = 3
+    }
+}
+declare namespace FinalPractice.SportDB {
+}
+declare namespace FinalPractice.SportDB {
     interface ProductForm {
         Title: Serenity.StringEditor;
-        Price: Serenity.IntegerEditor;
+        Price: Serenity.DecimalEditor;
+    }
+    class ProductForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
     }
 }
 declare namespace FinalPractice.SportDB {
@@ -582,14 +795,16 @@ declare namespace FinalPractice.SportDB {
         const idProperty = "ProductId";
         const nameProperty = "Title";
         const localTextPrefix = "SportDB.Product";
+        const lookupKey = "SportDB.Product";
+        function getLookup(): Q.Lookup<ProductRow>;
         const deletePermission = "Administration:General";
         const insertPermission = "Administration:General";
         const readPermission = "Administration:General";
         const updatePermission = "Administration:General";
-        namespace Fields {
-            const ProductId: any;
-            const Title: any;
-            const Price: any;
+        const enum Fields {
+            ProductId = "ProductId",
+            Title = "Title",
+            Price = "Price"
         }
     }
 }
@@ -601,12 +816,12 @@ declare namespace FinalPractice.SportDB {
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        namespace Methods {
-            const Create: string;
-            const Update: string;
-            const Delete: string;
-            const Retrieve: string;
-            const List: string;
+        const enum Methods {
+            Create = "SportDB/Product/Create",
+            Update = "SportDB/Product/Update",
+            Delete = "SportDB/Product/Delete",
+            Retrieve = "SportDB/Product/Retrieve",
+            List = "SportDB/Product/List"
         }
     }
 }
@@ -1077,6 +1292,71 @@ declare namespace FinalPractice.Membership {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
+    }
+}
+declare namespace FinalPractice.SportDB {
+    class CustomerDialog extends Serenity.EntityDialog<CustomerRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: CustomerForm;
+    }
+}
+declare namespace FinalPractice.SportDB {
+    class CustomerGrid extends Serenity.EntityGrid<CustomerRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof CustomerDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace FinalPractice.SportDB {
+    class OrderDialog extends Serenity.EntityDialog<OrderRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getDeletePermission(): string;
+        protected getInsertPermission(): string;
+        protected getUpdatePermission(): string;
+        protected form: OrderForm;
+    }
+}
+declare namespace FinalPractice.SportDB {
+    class OrderGrid extends Serenity.EntityGrid<OrderRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrderDialog;
+        protected getIdProperty(): string;
+        protected getInsertPermission(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace FinalPractice.SportDB {
+    class OrderrDetailsEditDialog extends Common.GridEditorDialog<OrderDetailsRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected form: OrderDetailsForm;
+        constructor();
+    }
+}
+declare namespace FinalPractice.SportDB {
+    class OrderrDetailsEditor extends Common.GridEditorBase<OrderDetailsRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrderrDetailsEditDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        protected getAddButtonCaption(): string;
+        validateEntity(row: any, id: any): boolean;
     }
 }
 declare namespace FinalPractice.SportDB {

@@ -90,6 +90,24 @@ namespace MVC
             public const string Error = "~/Views/Shared/Error.cshtml";
             public const string LeftNavigation = "~/Views/Shared/LeftNavigation.cshtml";
         }
+
+        public static class SportDB
+        {
+            public static class Customer
+            {
+                public const string CustomerIndex = "~/Modules/SportDB/Customer/CustomerIndex.cshtml";
+            }
+
+            public static class Order
+            {
+                public const string OrderIndex = "~/Modules/SportDB/Order/OrderIndex.cshtml";
+            }
+
+            public static class Product
+            {
+                public const string ProductIndex = "~/Modules/SportDB/Product/ProductIndex.cshtml";
+            }
+        }
     }
 }
 
