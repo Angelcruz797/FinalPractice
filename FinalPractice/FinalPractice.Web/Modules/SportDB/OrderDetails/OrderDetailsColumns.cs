@@ -13,10 +13,9 @@ namespace FinalPractice.SportDB.Columns
     [BasedOnRow(typeof(Entities.OrderDetailsRow), CheckNames = true)]
     public class OrderDetailsColumns
     {   
-        [EditLink, AlignRight]
-        public Int32 OrderDetailsId { get; set; }
+        //Column product list in the order
         [EditLink,Width(100)]
-        public Int32 ProductTitle { get; set; }
+        public Int32 ProductName { get; set; }
         public Double UnitPrice { get; set; }
         public Int32 Quantity { get; set; }
         public Double LineTotal { get; set; }

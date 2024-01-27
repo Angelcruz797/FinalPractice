@@ -14,5 +14,23 @@ namespace FinalPractice.SportDB {
 
         protected form = new CustomerForm(this.idPrefix);
 
+
+        private orderGrid: CustomerOrderGrid;
+
+        constructor() {
+            super();
+            //show another tap in CustomerForm
+            this.orderGrid = new CustomerOrderGrid(this.byId("OrderGrid"));
+            this.tabs.on('tabsactivate', (e, i) => {
+                this.arrange();
+            });
+        }
+
+        //filtering orders by customerId
+        protected afterLoadEntity() {
+            super.afterLoadEntity();
+            this.orderGrid.customerId = this.entityId;
+        }
+
     }
 }

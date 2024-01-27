@@ -2,8 +2,8 @@
     export interface CustomerForm {
         Firstname: Serenity.StringEditor;
         Lastname: Serenity.StringEditor;
-        Email: Serenity.EmailEditor;
         Gender: Serenity.EnumEditor;
+        Address: Serenity.StringEditor;
     }
 
     export class CustomerForm extends Serenity.PrefixedContext {
@@ -18,14 +18,13 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.EmailEditor;
-                var w2 = s.EnumEditor;
+                var w1 = s.EnumEditor;
 
                 Q.initFormType(CustomerForm, [
                     'Firstname', w0,
                     'Lastname', w0,
-                    'Email', w1,
-                    'Gender', w2
+                    'Gender', w1,
+                    'Address', w0
                 ]);
             }
         }

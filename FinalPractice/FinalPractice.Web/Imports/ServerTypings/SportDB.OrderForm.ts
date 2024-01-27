@@ -2,6 +2,7 @@
     export interface OrderForm {
         CutormerId: Serenity.LookupEditor;
         Status: Serenity.EnumEditor;
+        ShipCity: Serenity.EnumEditor;
         ReleaseDate: Serenity.DateEditor;
         ProductList: OrderrDetailsEditor;
     }
@@ -25,6 +26,7 @@
                 Q.initFormType(OrderForm, [
                     'CutormerId', w0,
                     'Status', w1,
+                    'ShipCity', w1,
                     'ReleaseDate', w2,
                     'ProductList', w3
                 ]);

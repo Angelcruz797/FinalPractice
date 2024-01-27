@@ -40,6 +40,20 @@ namespace FinalPractice.SportDB.Repositories
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+        private class MyListHandler : ListRequestHandler<MyRow> {
+
+            protected override void ApplyFilters(SqlQuery query)
+            {
+                
+                base.ApplyFilters(query);
+                //user Logged in
+                var user = (UserDefinition)Authorization.UserDefinition;
+
+                //condition to know if you have general permissions if it does not show you your orders 
+
+                if (!Authorization.HasPermission(PermissionKeys.General))
+                    query.Where(fld.CustomerId == user.UserId);
+            }
+        }
     }
 }

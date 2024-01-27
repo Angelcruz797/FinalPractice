@@ -1,6 +1,8 @@
 ﻿using Serenity.Navigation;
 using MyPages = FinalPractice.SportDB.Pages;
 
-[assembly: NavigationLink(int.MaxValue, "SportDB/Product", typeof(MyPages.ProductController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "SportDB/Customer", typeof(MyPages.CustomerController), icon: null)]
-[assembly: NavigationLink(int.MaxValue, "SportDB/Order", typeof(MyPages.OrderController), icon: null)]
+// order navigation in de SiteBar
+[assembly: NavigationMenu(8000, "Sport Shop", icon: "fa-soccer-ball-o")]
+[assembly: NavigationLink(8000, "Sport Shop/Product", typeof(MyPages.ProductController), icon: "fa-shopping-cart")]
+[assembly: NavigationLink(8000, "Sport Shop/Customer", typeof(MyPages.CustomerController), icon: "fa-user")]
+[assembly: NavigationLink(8000, "Sport Shop/Orders", typeof(MyPages.OrderController), icon: "fa-ticket")]

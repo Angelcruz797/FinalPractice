@@ -512,13 +512,12 @@ var FinalPractice;
                     CustomerForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
-                    var w1 = s.EmailEditor;
-                    var w2 = s.EnumEditor;
+                    var w1 = s.EnumEditor;
                     Q.initFormType(CustomerForm, [
                         'Firstname', w0,
                         'Lastname', w0,
-                        'Email', w1,
-                        'Gender', w2
+                        'Gender', w1,
+                        'Address', w0
                     ]);
                 }
                 return _this;
@@ -536,7 +535,7 @@ var FinalPractice;
         var CustomerRow;
         (function (CustomerRow) {
             CustomerRow.idProperty = 'CustomerId';
-            CustomerRow.nameProperty = 'Fullname';
+            CustomerRow.nameProperty = 'FullUsername';
             CustomerRow.localTextPrefix = 'SportDB.Customer';
             CustomerRow.lookupKey = 'SportDB.Customer';
             function getLookup() {
@@ -545,7 +544,7 @@ var FinalPractice;
             CustomerRow.getLookup = getLookup;
             CustomerRow.deletePermission = 'Administration:General';
             CustomerRow.insertPermission = 'Administration:General';
-            CustomerRow.readPermission = 'Administration:General';
+            CustomerRow.readPermission = 'Default:Customer:View';
             CustomerRow.updatePermission = 'Administration:General';
         })(CustomerRow = SportDB.CustomerRow || (SportDB.CustomerRow = {}));
     })(SportDB = FinalPractice.SportDB || (FinalPractice.SportDB = {}));
@@ -581,6 +580,22 @@ var FinalPractice;
             Gender[Gender["Female"] = 2] = "Female";
         })(Gender = SportDB.Gender || (SportDB.Gender = {}));
         Serenity.Decorators.registerEnumType(Gender, 'FinalPractice.SportDB.Gender', 'SportDB.Gender');
+    })(SportDB = FinalPractice.SportDB || (FinalPractice.SportDB = {}));
+})(FinalPractice || (FinalPractice = {}));
+var FinalPractice;
+(function (FinalPractice) {
+    var SportDB;
+    (function (SportDB) {
+        var OrderCity;
+        (function (OrderCity) {
+            OrderCity[OrderCity["none"] = 1] = "none";
+            OrderCity[OrderCity["SantoDomingo"] = 2] = "SantoDomingo";
+            OrderCity[OrderCity["Santiago"] = 3] = "Santiago";
+            OrderCity[OrderCity["Azua"] = 4] = "Azua";
+            OrderCity[OrderCity["Samana"] = 5] = "Samana";
+            OrderCity[OrderCity["Higuey"] = 6] = "Higuey";
+        })(OrderCity = SportDB.OrderCity || (SportDB.OrderCity = {}));
+        Serenity.Decorators.registerEnumType(OrderCity, 'FinalPractice.SportDB.OrderCity', 'SportDB.City');
     })(SportDB = FinalPractice.SportDB || (FinalPractice.SportDB = {}));
 })(FinalPractice || (FinalPractice = {}));
 var FinalPractice;
@@ -670,6 +685,7 @@ var FinalPractice;
                     Q.initFormType(OrderForm, [
                         'CutormerId', w0,
                         'Status', w1,
+                        'ShipCity', w1,
                         'ReleaseDate', w2,
                         'ProductList', w3
                     ]);
@@ -692,7 +708,7 @@ var FinalPractice;
             OrderRow.localTextPrefix = 'SportDB.Order';
             OrderRow.deletePermission = 'Administration:General';
             OrderRow.insertPermission = 'Administration:General';
-            OrderRow.readPermission = 'Administration:General';
+            OrderRow.readPermission = 'Default:Customer:View';
             OrderRow.updatePermission = 'Administration:General';
         })(OrderRow = SportDB.OrderRow || (SportDB.OrderRow = {}));
     })(SportDB = FinalPractice.SportDB || (FinalPractice.SportDB = {}));
@@ -729,6 +745,12 @@ var FinalPractice;
             OrderStatus[OrderStatus["delivered"] = 3] = "delivered";
         })(OrderStatus = SportDB.OrderStatus || (SportDB.OrderStatus = {}));
         Serenity.Decorators.registerEnumType(OrderStatus, 'FinalPractice.SportDB.OrderStatus', 'SportDB.Order');
+    })(SportDB = FinalPractice.SportDB || (FinalPractice.SportDB = {}));
+})(FinalPractice || (FinalPractice = {}));
+var FinalPractice;
+(function (FinalPractice) {
+    var SportDB;
+    (function (SportDB) {
     })(SportDB = FinalPractice.SportDB || (FinalPractice.SportDB = {}));
 })(FinalPractice || (FinalPractice = {}));
 var FinalPractice;
@@ -803,7 +825,7 @@ var FinalPractice;
 (function (FinalPractice) {
     var Texts;
     (function (Texts) {
-        FinalPractice['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, SportDB: { Customer: { CustomerId: 1, Email: 1, Firstname: 1, Fullname: 1, Gender: 1, Lastname: 1 }, Order: { CustomerFullname: 1, CutormerFirstname: 1, CutormerGender: 1, CutormerId: 1, CutormerLastname: 1, OrderId: 1, ProductList: 1, ReleaseDate: 1, Status: 1 }, OrderDetails: { LineTotal: 1, OrderCutormerId: 1, OrderDetailsId: 1, OrderId: 1, OrderReleaseDate: 1, OrderStatus: 1, OrderTotal: 1, ProductId: 1, ProductPrice: 1, ProductTitle: 1, Quantity: 1, UnitPrice: 1 }, Product: { Price: 1, ProductId: 1, Title: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
+        FinalPractice['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, LastDirectoryUpdate: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, SportDB: { Customer: { Address: 1, CustomerId: 1, Email: 1, Firstname: 1, FullUsername: 1, Fullname: 1, Gender: 1, Lastname: 1, UserId: 1 }, Order: { CustomerFullname: 1, CutormerFirstname: 1, CutormerGender: 1, CutormerId: 1, CutormerLastname: 1, OrderId: 1, ProductList: 1, ReleaseDate: 1, ShipCity: 1, Status: 1 }, OrderDetails: { LineTotal: 1, OrderCutormerId: 1, OrderDetailsId: 1, OrderId: 1, OrderReleaseDate: 1, OrderStatus: 1, OrderTotal: 1, ProductId: 1, ProductName: 1, ProductPrice: 1, ProductTitle: 1, Quantity: 1, UnitPrice: 1 }, Product: { Price: 1, ProductId: 1, Title: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, SavePrimaryKeyError: 1 } });
     })(Texts = FinalPractice.Texts || (FinalPractice.Texts = {}));
 })(FinalPractice || (FinalPractice = {}));
 var FinalPractice;
@@ -3235,8 +3257,13 @@ var FinalPractice;
         var CustomerDialog = /** @class */ (function (_super) {
             __extends(CustomerDialog, _super);
             function CustomerDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
+                var _this = _super.call(this) || this;
                 _this.form = new SportDB.CustomerForm(_this.idPrefix);
+                //show another tap in CustomerForm
+                _this.orderGrid = new SportDB.CustomerOrderGrid(_this.byId("OrderGrid"));
+                _this.tabs.on('tabsactivate', function (e, i) {
+                    _this.arrange();
+                });
                 return _this;
             }
             CustomerDialog.prototype.getFormKey = function () { return SportDB.CustomerForm.formKey; };
@@ -3247,6 +3274,11 @@ var FinalPractice;
             CustomerDialog.prototype.getDeletePermission = function () { return SportDB.CustomerRow.deletePermission; };
             CustomerDialog.prototype.getInsertPermission = function () { return SportDB.CustomerRow.insertPermission; };
             CustomerDialog.prototype.getUpdatePermission = function () { return SportDB.CustomerRow.updatePermission; };
+            //filtering orders by customerId
+            CustomerDialog.prototype.afterLoadEntity = function () {
+                _super.prototype.afterLoadEntity.call(this);
+                this.orderGrid.customerId = this.entityId;
+            };
             CustomerDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], CustomerDialog);
@@ -3304,6 +3336,80 @@ var FinalPractice;
         SportDB.OrderDialog = OrderDialog;
     })(SportDB = FinalPractice.SportDB || (FinalPractice.SportDB = {}));
 })(FinalPractice || (FinalPractice = {}));
+/// <reference path="../Order/OrderDialog.ts" />
+var FinalPractice;
+(function (FinalPractice) {
+    var SportDB;
+    (function (SportDB) {
+        //Use for show details in customerOrder
+        var CustomerOrderDialog = /** @class */ (function (_super) {
+            __extends(CustomerOrderDialog, _super);
+            function CustomerOrderDialog() {
+                return _super.call(this) || this;
+            }
+            CustomerOrderDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setReadOnly(this.form.CutormerId, true);
+            };
+            CustomerOrderDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CustomerOrderDialog);
+            return CustomerOrderDialog;
+        }(SportDB.OrderDialog));
+        SportDB.CustomerOrderDialog = CustomerOrderDialog;
+    })(SportDB = FinalPractice.SportDB || (FinalPractice.SportDB = {}));
+})(FinalPractice || (FinalPractice = {}));
+var FinalPractice;
+(function (FinalPractice) {
+    var SportDB;
+    (function (SportDB) {
+        var CustomerOrderGrid = /** @class */ (function (_super) {
+            __extends(CustomerOrderGrid, _super);
+            function CustomerOrderGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            CustomerOrderGrid.prototype.getColumnsKey = function () { return "SportDB.CustomerOrder"; };
+            CustomerOrderGrid.prototype.getIdProperty = function () { return SportDB.OrderRow.idProperty; };
+            //see details in CustomerOrder
+            CustomerOrderGrid.prototype.getDialogType = function () { return SportDB.CustomerOrderDialog; };
+            CustomerOrderGrid.prototype.getLocalTextPrefix = function () { return SportDB.OrderRow.localTextPrefix; };
+            CustomerOrderGrid.prototype.getService = function () { return SportDB.OrderService.baseUrl; };
+            //disable buttons in order tap in CustomerForm
+            CustomerOrderGrid.prototype.getButtons = function () {
+                return null;
+            };
+            CustomerOrderGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            CustomerOrderGrid.prototype.usePager = function () {
+                return false;
+            };
+            CustomerOrderGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.customerId;
+            };
+            Object.defineProperty(CustomerOrderGrid.prototype, "customerId", {
+                get: function () {
+                    return this._customerId;
+                },
+                //validation filtering orders by customerId
+                set: function (value) {
+                    if (this._customerId != value) {
+                        this._customerId = value;
+                        this.setEquality("CutormerId" /* CutormerId */, value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            CustomerOrderGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CustomerOrderGrid);
+            return CustomerOrderGrid;
+        }(Serenity.EntityGrid));
+        SportDB.CustomerOrderGrid = CustomerOrderGrid;
+    })(SportDB = FinalPractice.SportDB || (FinalPractice.SportDB = {}));
+})(FinalPractice || (FinalPractice = {}));
 var FinalPractice;
 (function (FinalPractice) {
     var SportDB;
@@ -3319,6 +3425,18 @@ var FinalPractice;
             OrderGrid.prototype.getInsertPermission = function () { return SportDB.OrderRow.insertPermission; };
             OrderGrid.prototype.getLocalTextPrefix = function () { return SportDB.OrderRow.localTextPrefix; };
             OrderGrid.prototype.getService = function () { return SportDB.OrderService.baseUrl; };
+            //button Excel
+            OrderGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(FinalPractice.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    service: SportDB.OrderService.baseUrl + '/ListExcel',
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    separator: true
+                }));
+                return buttons;
+            };
             OrderGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], OrderGrid);
@@ -3337,6 +3455,7 @@ var FinalPractice;
             function OrderrDetailsEditDialog() {
                 var _this = _super.call(this) || this;
                 _this.form = new SportDB.OrderDetailsForm(_this.idPrefix);
+                //set value to Price in the form product list
                 _this.form.ProductId.changeSelect2(function (e) {
                     var productId = Q.toId(_this.form.ProductId.value);
                     if (productId != null) {
@@ -3368,19 +3487,23 @@ var FinalPractice;
             OrderrDetailsEditor.prototype.getColumnsKey = function () { return "SportDB.OrderDetails"; };
             OrderrDetailsEditor.prototype.getDialogType = function () { return SportDB.OrderrDetailsEditDialog; };
             OrderrDetailsEditor.prototype.getLocalTextPrefix = function () { return SportDB.OrderDetailsRow.localTextPrefix; };
+            // add and rename button to add new products
             OrderrDetailsEditor.prototype.getAddButtonCaption = function () {
                 return "Add Product";
             };
             OrderrDetailsEditor.prototype.validateEntity = function (row, id) {
                 row.ProductId = Q.toId(row.ProductId);
+                // validation if the product is already there
                 var sameProduct = Q.tryFirst(this.view.getItems(), function (x) { return x.ProductId === row.ProductId; });
                 if (sameProduct && this.id(sameProduct) !== id) {
                     Q.alert('This product is already in order details!');
                     return false;
                 }
-                console.log("hola");
-                row.ProductTitle = SportDB.ProductRow.getLookup().itemById[row.ProductId].Title;
+                //set value to product name using Lookup
+                row.ProductName = SportDB.ProductRow.getLookup().itemById[row.ProductId].Title;
+                //set value to price total
                 row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0);
+                Q.notifySuccess("it was executed correctly");
                 return true;
             };
             OrderrDetailsEditor = __decorate([

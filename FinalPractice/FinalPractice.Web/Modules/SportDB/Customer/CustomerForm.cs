@@ -13,10 +13,12 @@ namespace FinalPractice.SportDB.Forms
     [BasedOnRow(typeof(Entities.CustomerRow), CheckNames = true)]
     public class CustomerForm
     {
+        [Category("Customer")]
         public String Firstname { get; set; }
         public String Lastname { get; set; }
-        [EmailEditor]
-        public String Email { get; set; }
+        //select gender in the form
         public Gender Gender { get; set; }
+        [Category("Other details")]
+        public String Address { get; set; }
     }
 }

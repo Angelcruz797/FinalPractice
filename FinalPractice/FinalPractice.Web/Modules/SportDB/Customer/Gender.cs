@@ -2,6 +2,8 @@
 using System.ComponentModel;
 namespace FinalPractice.SportDB
 {
+    //enum of various Gender
+
     [EnumKey("SportDB.Gender")]
     public enum Gender
     {

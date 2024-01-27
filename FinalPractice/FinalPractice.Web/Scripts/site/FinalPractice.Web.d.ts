@@ -569,8 +569,8 @@ declare namespace FinalPractice.SportDB {
     interface CustomerForm {
         Firstname: Serenity.StringEditor;
         Lastname: Serenity.StringEditor;
-        Email: Serenity.EmailEditor;
         Gender: Serenity.EnumEditor;
+        Address: Serenity.StringEditor;
     }
     class CustomerForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -579,29 +579,37 @@ declare namespace FinalPractice.SportDB {
     }
 }
 declare namespace FinalPractice.SportDB {
+}
+declare namespace FinalPractice.SportDB {
     interface CustomerRow {
         CustomerId?: number;
+        UserId?: number;
         Fullname?: string;
         Firstname?: string;
         Lastname?: string;
+        FullUsername?: string;
+        Address?: string;
         Gender?: Gender;
         Email?: string;
     }
     namespace CustomerRow {
         const idProperty = "CustomerId";
-        const nameProperty = "Fullname";
+        const nameProperty = "FullUsername";
         const localTextPrefix = "SportDB.Customer";
         const lookupKey = "SportDB.Customer";
         function getLookup(): Q.Lookup<CustomerRow>;
         const deletePermission = "Administration:General";
         const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
+        const readPermission = "Default:Customer:View";
         const updatePermission = "Administration:General";
         const enum Fields {
             CustomerId = "CustomerId",
+            UserId = "UserId",
             Fullname = "Fullname",
             Firstname = "Firstname",
             Lastname = "Lastname",
+            FullUsername = "FullUsername",
+            Address = "Address",
             Gender = "Gender",
             Email = "Email"
         }
@@ -631,6 +639,16 @@ declare namespace FinalPractice.SportDB {
     }
 }
 declare namespace FinalPractice.SportDB {
+    enum OrderCity {
+        none = 1,
+        SantoDomingo = 2,
+        Santiago = 3,
+        Azua = 4,
+        Samana = 5,
+        Higuey = 6
+    }
+}
+declare namespace FinalPractice.SportDB {
 }
 declare namespace FinalPractice.SportDB {
 }
@@ -651,6 +669,7 @@ declare namespace FinalPractice.SportDB {
         OrderDetailsId?: number;
         OrderId?: number;
         ProductId?: number;
+        ProductName?: string;
         Quantity?: number;
         UnitPrice?: number;
         LineTotal?: number;
@@ -674,6 +693,7 @@ declare namespace FinalPractice.SportDB {
             OrderDetailsId = "OrderDetailsId",
             OrderId = "OrderId",
             ProductId = "ProductId",
+            ProductName = "ProductName",
             Quantity = "Quantity",
             UnitPrice = "UnitPrice",
             LineTotal = "LineTotal",
@@ -707,6 +727,7 @@ declare namespace FinalPractice.SportDB {
     interface OrderForm {
         CutormerId: Serenity.LookupEditor;
         Status: Serenity.EnumEditor;
+        ShipCity: Serenity.EnumEditor;
         ReleaseDate: Serenity.DateEditor;
         ProductList: OrderrDetailsEditor;
     }
@@ -721,6 +742,7 @@ declare namespace FinalPractice.SportDB {
         OrderId?: number;
         CutormerId?: number;
         Status?: OrderStatus;
+        ShipCity?: OrderCity;
         ReleaseDate?: string;
         ProductList?: OrderDetailsRow[];
         CutormerFirstname?: string;
@@ -733,12 +755,13 @@ declare namespace FinalPractice.SportDB {
         const localTextPrefix = "SportDB.Order";
         const deletePermission = "Administration:General";
         const insertPermission = "Administration:General";
-        const readPermission = "Administration:General";
+        const readPermission = "Default:Customer:View";
         const updatePermission = "Administration:General";
         const enum Fields {
             OrderId = "OrderId",
             CutormerId = "CutormerId",
             Status = "Status",
+            ShipCity = "ShipCity",
             ReleaseDate = "ReleaseDate",
             ProductList = "ProductList",
             CutormerFirstname = "CutormerFirstname",
@@ -771,6 +794,8 @@ declare namespace FinalPractice.SportDB {
         InToDeliver = 2,
         delivered = 3
     }
+}
+declare namespace FinalPractice.SportDB {
 }
 declare namespace FinalPractice.SportDB {
 }
@@ -1305,6 +1330,9 @@ declare namespace FinalPractice.SportDB {
         protected getInsertPermission(): string;
         protected getUpdatePermission(): string;
         protected form: CustomerForm;
+        private orderGrid;
+        constructor();
+        protected afterLoadEntity(): void;
     }
 }
 declare namespace FinalPractice.SportDB {
@@ -1331,6 +1359,29 @@ declare namespace FinalPractice.SportDB {
     }
 }
 declare namespace FinalPractice.SportDB {
+    class CustomerOrderDialog extends OrderDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace FinalPractice.SportDB {
+    class CustomerOrderGrid extends Serenity.EntityGrid<OrderRow, any> {
+        protected getColumnsKey(): string;
+        protected getIdProperty(): string;
+        protected getDialogType(): typeof CustomerOrderDialog;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getButtons(): any;
+        protected getInitialTitle(): any;
+        protected usePager(): boolean;
+        protected getGridCanLoad(): boolean;
+        private _customerId;
+        get customerId(): number;
+        set customerId(value: number);
+    }
+}
+declare namespace FinalPractice.SportDB {
     class OrderGrid extends Serenity.EntityGrid<OrderRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof OrderDialog;
@@ -1339,6 +1390,7 @@ declare namespace FinalPractice.SportDB {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace FinalPractice.SportDB {

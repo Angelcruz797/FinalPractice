@@ -7422,3 +7422,12 @@ section.content > .s-DataGrid {
 .s-SportDB-OrderDialog .caption {
   width: 150px;
 }
+.s-SportDB-OrderrDetailsEditDialog > .size {
+  width: 450px;
+}
+.s-SportDB-OrderrDetailsEditDialog .caption {
+  width: 120px;
+}
+.s-SportDB-OrderrDetailsEditDialog .s-PropertyGrid .categories {
+  height: 120px;
+}

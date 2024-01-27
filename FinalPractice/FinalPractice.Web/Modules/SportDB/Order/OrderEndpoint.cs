@@ -2,9 +2,12 @@
 namespace FinalPractice.SportDB.Endpoints
 {
     using Serenity;
+    using Serenity.Web;
     using Serenity.Data;
     using Serenity.Services;
+    using System;
     using System.Data;
+    using Serenity.Reporting;
     using System.Web.Mvc;
     using MyRepository = Repositories.OrderRepository;
     using MyRow = Entities.OrderRow;
@@ -41,6 +44,15 @@ namespace FinalPractice.SportDB.Endpoints
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyRepository().List(connection, request);
+        }
+        // EndPoint Excel
+        public FileContentResult ListExcel(IDbConnection connection, ListRequest request)
+        {
+            var data = List(connection, request).Entities;
+            var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.OrderColumns));
+            var bytes = new ReportRepository().Render(report);
+            return ExcelContentResult.Create(bytes, "OrderList_" +
+                DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
         }
     }
 }

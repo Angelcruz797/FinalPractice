@@ -9,19 +9,17 @@ namespace FinalPractice.SportDB.Columns
     using System.Collections.Generic;
     using System.IO;
 
-    [ColumnsScript("SportDB.Order")]
-    [BasedOnRow(typeof(Entities.OrderRow), CheckNames = true)]
-    public class OrderColumns
+    // form for order tab in CustomerForm
+    [ColumnsScript("SportDB.CustomerOrder")]
+    [BasedOnRow(typeof(Entities.OrderRow))]
+    public class CustomerOrderColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 OrderId { get; set; }
         [EditLink, DisplayName("Full Name")]
         public String CustomerFullname { get; set; }
-
-        //order status
         public OrderStatus Status { get; set; }
-
-        //Order city
+        [Width(120)]
         public OrderCity ShipCity { get; set; }
         public DateTime ReleaseDate { get; set; }
     }

@@ -12,7 +12,7 @@ namespace FinalPractice.Migrations.DefaultDB
             .WithColumn("Firstname").AsString(50).NotNullable()
             .WithColumn("Lastname").AsString(50).NotNullable()
             .WithColumn("Gender").AsInt32().NotNullable()
-            .WithColumn("Email").AsString().Nullable();
+            .WithColumn("Email").AsString();
         }
     }
 }

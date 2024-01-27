@@ -3,6 +3,7 @@
         OrderDetailsId?: number;
         OrderId?: number;
         ProductId?: number;
+        ProductName?: string;
         Quantity?: number;
         UnitPrice?: number;
         LineTotal?: number;
@@ -31,6 +32,7 @@
             OrderDetailsId = "OrderDetailsId",
             OrderId = "OrderId",
             ProductId = "ProductId",
+            ProductName = "ProductName",
             Quantity = "Quantity",
             UnitPrice = "UnitPrice",
             LineTotal = "LineTotal",

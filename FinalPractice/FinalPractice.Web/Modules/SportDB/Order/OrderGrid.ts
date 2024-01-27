@@ -13,5 +13,17 @@ namespace FinalPractice.SportDB {
         constructor(container: JQuery) {
             super(container);
         }
+        //button Excel
+        protected getButtons() {
+            var buttons = super.getButtons();
+
+            buttons.push(Common.ExcelExportHelper.createToolButton({
+                grid: this,
+                service: OrderService.baseUrl + '/ListExcel',
+                onViewSubmit: () => this.onViewSubmit(),
+                separator: true
+            }));
+            return buttons;
+        }
     }
 }

@@ -29,7 +29,10 @@ namespace FinalPractice.SportDB.Entities
             set { Fields.OrderId[this] = value; }
         }
 
-        [DisplayName("Product"), NotNull, ForeignKey("[spt].[Product]", "ProductId"), LeftJoin("jProduct"), TextualField("ProductTitle")]
+        [DisplayName("Product"), NotNull, ForeignKey("[spt].[Product]", "ProductId")]
+        [LeftJoin("jProduct"), TextualField("ProductTitle")]
+
+        //Lookup products
         [LookupEditor(typeof(ProductRow))]
         public Int32? ProductId
         {
@@ -43,19 +46,30 @@ namespace FinalPractice.SportDB.Entities
             get { return Fields.Quantity[this]; }
             set { Fields.Quantity[this] = value; }
         }
+
         [DisplayName("Unit Price"), NotNull]
         public Double? UnitPrice
         {
             get { return Fields.UnitPrice[this]; }
             set { Fields.UnitPrice[this] = value; }
         }
+        //total product price * quantity
         [DisplayName("Line Total")]
-        [Expression("(T0.[ProductPrice] * T0.[Quantity]")]
+        [Expression("(t0.UnitPrice * t0.Quantity)")]
 
         public Double? LineTotal
         {
             get { return Fields.LineTotal[this]; }
             set { Fields.LineTotal[this] = value; }
+        }
+
+        // Product Name
+        [DisplayName("Product Name")]
+        [Expression("jProduct.[Title]")]
+        public String ProductName
+        {
+            get { return Fields.ProductName[this]; }
+            set { Fields.ProductName[this] = value; }
         }
 
 
@@ -118,6 +132,7 @@ namespace FinalPractice.SportDB.Entities
             public Int32Field OrderDetailsId;
             public Int32Field OrderId;
             public Int32Field ProductId;
+            public StringField ProductName;
             public Int32Field Quantity;
             public DoubleField UnitPrice;
             public DoubleField LineTotal;

@@ -596,6 +596,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ionicons.svg" />
     <Content Include="fonts\Simple-Line-Icons.svg" />
+    <Content Include="Modules\SportDB\Customer\SportDB.CustomerDialog.Template.html" />
     <Content Include="Readme.CodeGenerator.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1062,7 +1063,13 @@
     <TypeScriptCompile Include="Imports\ServerTypings\SportDB.CustomerColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.CustomerOrderColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\SportDB.Gender.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderCity.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderColumns.ts">
@@ -1077,6 +1084,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\SportDB.OrderStatus.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\SportDB.PermissionKeys.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\SportDB.ProductColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1084,6 +1094,8 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Membership\Account\LoginPanel.ts" />
+    <TypeScriptCompile Include="Modules\SportDB\Customer\CustomerOrderDialog.ts" />
+    <TypeScriptCompile Include="Modules\SportDB\Customer\CustomerOrderGrid.ts" />
     <TypeScriptCompile Include="Modules\SportDB\OrderDetails\OrderrDetailsEditDialog.ts" />
     <TypeScriptCompile Include="Modules\SportDB\OrderDetails\OrderrDetailsEditor.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
@@ -1720,6 +1732,9 @@
     <Compile Include="Imports\ClientTypes\SportDB.OrderrDetailsEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20240126_230100_UpdateCustomer2.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20240126_221100_UpdateOrder2.cs" />
+    <Compile Include="Migrations\DefaultDB\DefaultDB_20240126_191100_UpdateCustomer.cs" />
     <Compile Include="Migrations\DefaultDB\DefaultDB_20240125_230200_UpdateOrderDetails.cs" />
     <Compile Include="Migrations\DefaultDB\DefaultDB_20240125_202300_UpdateOrder.cs" />
     <Compile Include="Migrations\DefaultDB\DefaultDB_20240124_185500_TableOrder.cs" />
@@ -1805,10 +1820,13 @@
     <Compile Include="Modules\Common\UserPreference\UserPreferenceRow.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberHelper.cs" />
     <Compile Include="Modules\Common\Helpers\GetNextNumberRequest.cs" />
+    <Compile Include="Modules\SportDB\Customer\CustomerOrderColumns.cs" />
     <Compile Include="Modules\SportDB\Customer\Gender.cs" />
     <Compile Include="Modules\SportDB\OrderDetails\OrderDetailsColumns.cs" />
     <Compile Include="Modules\SportDB\OrderDetails\OrderDetailsForm.cs" />
+    <Compile Include="Modules\SportDB\Order\OrderCity.cs" />
     <Compile Include="Modules\SportDB\Order\OrderStatus.cs" />
+    <Compile Include="Modules\SportDB\SportDBPermissionKeys.cs" />
     <Compile Include="Modules\Texts.cs" />
     <Compile Include="Modules\Membership\Account\AccountPage.cs" />
     <Compile Include="Modules\Administration\User\Authentication\AuthorizationService.cs" />

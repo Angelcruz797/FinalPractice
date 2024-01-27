@@ -2,6 +2,8 @@
 using System.ComponentModel;
 namespace FinalPractice.SportDB
 {
+    // enum of various status
+
     [EnumKey("SportDB.Order")]
     public enum OrderStatus
     {
